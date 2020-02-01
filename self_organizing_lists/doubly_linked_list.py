@@ -13,13 +13,19 @@ class List:
         """
         Traverse the list in forward direction.
         """
-        pass
+        node = self.head
+        while node:
+            yield node.data
+            node = node.next
 
     def __reversed__(self):
         """
         Traverse the list in reverse direction.
         """
-        pass
+        node = self.tail
+        while node:
+            yield node.data
+            node = node.prev
 
     def append(self, data):
         """
