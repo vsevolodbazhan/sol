@@ -108,7 +108,9 @@ class List:
         Get the first node that contains a given data.
         Return `None` if no such node is present in the list.
         """
-        for node in self:
+        node = self.head
+        while node:
             if node.data == data:
                 return node
+            node = node.next
         return None
