@@ -79,7 +79,16 @@ class List:
         """
         Remove a given node from the list.
         """
-        pass
+        # A node might be the head of the list.
+        if node is self.head:
+            self.head = node.next
+        else:
+            node.prev.next = node.next
+        # Or a node might be the tail of the list.
+        if node is self.tail:
+            self.tail = node.prev
+        else:
+            node.next.prev = node.prev
 
     def find(self, data):
         """
