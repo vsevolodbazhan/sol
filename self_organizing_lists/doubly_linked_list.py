@@ -31,13 +31,23 @@ class List:
         """
         Insert an element to the end of the list.
         """
-        pass
+        new_node = Node(data)
+        if self.tail:
+            self.insert_after(self.tail, new_node)
+        else:
+            self.head = new_node
+            self.tail = new_node
 
     def prepend(self, data):
         """
         Insert an element to the beginning of the list.
         """
-        pass
+        new_node = Node(data)
+        if self:
+            self.insert_before(self.head, new_node)
+        else:
+            self.head = new_node
+            self.tail = new_node
 
     def insert_before(self, existing_node, new_node):
         """
