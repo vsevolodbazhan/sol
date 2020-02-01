@@ -95,4 +95,7 @@ class List:
         Get the first node that contains a given data.
         Return `None` if no such node is present in the list.
         """
-        pass
+        for node in self:
+            if node.data == data:
+                return node
+        return None
