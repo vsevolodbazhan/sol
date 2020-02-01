@@ -43,13 +43,27 @@ class List:
         """
         Insert a node before a given node.
         """
-        pass
+        new_node.next = existing_node
+        if existing_node is self.head:
+            new_node.prev = None
+            self.head = new_node
+        else:
+            new_node.prev = existing_node.prev
+            existing_node.prev.next = new_node
+        existing_node.prev = new_node
 
     def insert_after(self, existing_node, new_node):
         """
         Insert a node after a given one.
         """
-        pass
+        new_node.prev = existing_node
+        if existing_node is self.tail:
+            new_node.next = None
+            self.tail = new_node
+        else:
+            new_node.next = existing_node.next
+            existing_node.next.prev = new_node
+        existing_node.next = new_node
 
     def remove(self, node):
         """
