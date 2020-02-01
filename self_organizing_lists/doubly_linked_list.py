@@ -9,6 +9,19 @@ class List:
         self.head = None
         self.tail = None
 
+    def __repr__(self):
+        """
+        Return an unambiguous representation of an object.
+        """
+        return (f'{self.__class__.__name__}('
+                f'head={self.head!r}, tail={self.tail!r})')
+
+    def __str__(self):
+        """
+        Return elements of the list as a string.
+        """
+        return f'{[element for element in self]}'
+
     def __iter__(self):
         """
         Traverse the list in forward direction.
