@@ -9,6 +9,12 @@ class List:
         self.head = None
         self.tail = None
 
+    @classmethod
+    def from_iterable(cls, iterable):
+        new_list = cls()
+        new_list.extend(iterable)
+        return new_list
+
     def __repr__(self):
         """
         Return an unambiguous representation of an object.
@@ -87,6 +93,13 @@ class List:
             new_node.next = existing_node.next
             existing_node.next.prev = new_node
         existing_node.next = new_node
+
+    def extend(self, iterable):
+        """
+        Insert items from `iterable` to the end of the list.
+        """
+        for item in iterable:
+            self.append(item)
 
     def remove(self, node):
         """
