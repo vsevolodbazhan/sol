@@ -111,6 +111,10 @@ class List:
         node = self.head
         while node:
             if node.data == data:
+                self.rearrange(node)
                 return node
             node = node.next
         return None
+
+    def rearrange(self, node):
+        return
