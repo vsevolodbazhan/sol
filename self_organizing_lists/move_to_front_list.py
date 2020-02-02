@@ -1,4 +1,4 @@
-from doubly_linked_list import List
+from .doubly_linked_list import List
 
 
 class MoveToFrontList(List):
