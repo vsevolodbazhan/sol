@@ -117,4 +117,7 @@ class List:
         return None
 
     def rearrange(self, node):
+        """
+        Apply self-organizing method.
+        """
         return
