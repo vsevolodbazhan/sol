@@ -102,6 +102,17 @@ class List:
     def __len__(self):
         return self.size
 
+    def __contains__(self, data):
+        """
+        Check if the list contains an element with
+        a given data.
+        """
+        for node in self._nodes():
+            if node.data == data:
+                self._rearrange(node)
+                return True
+        return False
+
     def append(self, data):
         """
         Insert an element to the end of the list.
@@ -246,19 +257,6 @@ class List:
             node.next.prev = node.prev
             node.prev.next = node.next
             self.size -= 1
-
-    def find(self, data):
-        """
-        Get the first node that contains a given data.
-        Return `None` if no such node is present in the list.
-        """
-        node = self.head
-        while node:
-            if node.data == data:
-                self._rearrange(node)
-                return node
-            node = node.next
-        return None
 
     def _rearrange(self, node):
         """
