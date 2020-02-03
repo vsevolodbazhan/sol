@@ -138,6 +138,17 @@ class List:
         self.head.prev = None
         self.size -= 1
 
+    def erase(self, data):
+        """
+        Erase all elements of the list that
+        contain a given data.
+        """
+        for node in self.nodes():
+            next = node.next
+            if node.data == data:
+                self.remove(node)
+            node = next
+
     def remove(self, node):
         """
         Remove a given node from the list.
@@ -169,3 +180,12 @@ class List:
         Apply self-organizing method.
         """
         return
+
+    def nodes(self):
+        """
+        Traverse the list nodes in forward direction.
+        """
+        node = self.head
+        while node:
+            yield node
+            node = node.next
