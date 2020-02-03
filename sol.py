@@ -217,9 +217,15 @@ class List:
         >>> print(a)
         [1, 2]
         """
-        self.tail = self.tail.prev
-        self.tail.next = None
-        self.size -= 1
+        if self.is_empty():
+            raise ListEmpty('List must not be empty')
+
+        if self.size == 1:
+            self._remove_last()
+        else:
+            self.tail = self.tail.prev
+            self.tail.next = None
+            self.size -= 1
 
     def pop_front(self):
         """
@@ -232,9 +238,15 @@ class List:
         >>> print(a)
         [2, 3]
         """
-        self.head = self.head.next
-        self.head.prev = None
-        self.size -= 1
+        if self.is_empty():
+            raise ListEmpty('List must not be empty')
+
+        if self.size == 1:
+            self._remove_last()
+        else:
+            self.head = self.head.next
+            self.head.prev = None
+            self.size -= 1
 
     def erase(self, data):
         """
@@ -266,6 +278,17 @@ class List:
             node.next.prev = node.prev
             node.prev.next = node.next
             self.size -= 1
+
+    def _remove_last(self):
+        """
+        Remove the only node in the list.
+        """
+        if self.size > 1:
+            raise ValueError('List has more than one node')
+
+        self.head = None
+        self.tail = None
+        self.size = 0
 
     def _rearrange(self, node):
         """
