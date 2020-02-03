@@ -1,6 +1,12 @@
 from .node import Node
 
 
+class NotEmptyError(ValueError):
+    """
+    Raised when a list not is empty.
+    """
+
+
 class List:
     def __init__(self):
         """
@@ -8,6 +14,7 @@ class List:
         """
         self.head = None
         self.tail = None
+        self.size = 0
 
     @classmethod
     def from_iterable(cls, iterable):
@@ -46,6 +53,9 @@ class List:
             yield node.data
             node = node.prev
 
+    def __len__(self):
+        return self.size
+
     def append(self, data):
         """
         Insert an element to the end of the list.
@@ -54,19 +64,28 @@ class List:
         if self.tail:
             self.insert_after(self.tail, new_node)
         else:
-            self.head = new_node
-            self.tail = new_node
+            self.insert_first(new_node)
 
     def prepend(self, data):
         """
         Insert an element to the beginning of the list.
         """
         new_node = Node(data)
-        if self:
+        if self.head:
             self.insert_before(self.head, new_node)
         else:
-            self.head = new_node
-            self.tail = new_node
+            self.insert_first(new_node)
+
+    def insert_first(self, new_node):
+        """
+        Insert a node into the empty list.
+        Raise `NotEmptyError` if the list is not empty.
+        """
+        if self.size > 0:
+            raise NotEmptyError('List must be empty')
+        self.head = new_node
+        self.tail = new_node
+        self.size += 1
 
     def insert_before(self, existing_node, new_node):
         """
@@ -80,6 +99,7 @@ class List:
             new_node.prev = existing_node.prev
             existing_node.prev.next = new_node
         existing_node.prev = new_node
+        self.size += 1
 
     def insert_after(self, existing_node, new_node):
         """
@@ -93,6 +113,7 @@ class List:
             new_node.next = existing_node.next
             existing_node.next.prev = new_node
         existing_node.next = new_node
+        self.size += 1
 
     def extend(self, iterable):
         """
@@ -101,20 +122,34 @@ class List:
         for item in iterable:
             self.append(item)
 
+    def pop_back(self):
+        """
+        Remove the last element of the list.
+        """
+        self.tail = self.tail.prev
+        self.tail.next = None
+        self.size -= 1
+
+    def pop_front(self):
+        """
+        Remove the first element of the list.
+        """
+        self.head = self.head.next
+        self.head.prev = None
+        self.size -= 1
+
     def remove(self, node):
         """
         Remove a given node from the list.
         """
-        # A node might be the head of the list.
         if node is self.head:
-            self.head = node.next
-        else:
-            node.prev.next = node.next
-        # Or a node might be the tail of the list.
-        if node is self.tail:
-            self.tail = node.prev
+            self.pop_front()
+        elif node is self.tail:
+            self.pop_back()
         else:
             node.next.prev = node.prev
+            node.prev.next = node.next
+            self.size -= 1
 
     def find(self, data):
         """
