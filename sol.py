@@ -32,6 +32,18 @@ class NotEmptyError(ValueError):
 class List:
     """
     Doubly linked list.
+
+    >>> a = List.from_iterable([1, 2, 3])
+    >>> print(a)
+    [1, 2, 3]
+    >>> 1 in a
+    True
+    >>> print(a)
+    [1, 2, 3]
+    >>> 5 in a
+    False
+    >>> print(a)
+    [1, 2, 3]
     """
 
     def __init__(self):
@@ -267,6 +279,22 @@ class List:
 class MoveToFrontList(List):
     """
     Doubly linked list that implements move to front method.
+
+    >>> a = MoveToFrontList.from_iterable([1, 2, 3])
+    >>> print(a)
+    [1, 2, 3]
+    >>> 3 in a
+    True
+    >>> print(a)
+    [3, 1, 2]
+    >>> 2 in a
+    True
+    >>> print(a)
+    [2, 3, 1]
+    >>> 5 in a
+    False
+    >>> print(a)
+    [2, 3, 1]
     """
 
     def _rearrange(self, node):
@@ -281,6 +309,22 @@ class MoveToFrontList(List):
 class TransposeList(List):
     """
     Doubly linked list that implements transpose method.
+
+    >>> a = TransposeList.from_iterable([1, 2, 3])
+    >>> print(a)
+    [1, 2, 3]
+    >>> 3 in a
+    True
+    >>> print(a)
+    [1, 3, 2]
+    >>> 2 in a
+    True
+    >>> print(a)
+    [1, 2, 3]
+    >>> 5 in a
+    False
+    >>> print(a)
+    [1, 2, 3]
     """
 
     def _rearrange(self, node):
