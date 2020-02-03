@@ -1,4 +1,4 @@
-from .node import Node
+from ._node import Node
 
 
 class NotEmptyError(ValueError):
@@ -8,10 +8,11 @@ class NotEmptyError(ValueError):
 
 
 class List:
+    """
+    Doubly linked list.
+    """
+
     def __init__(self):
-        """
-        Create a new doubly linked list.
-        """
         self.head = None
         self.tail = None
         self.size = 0
@@ -66,9 +67,9 @@ class List:
         """
         new_node = Node(data)
         if self.tail:
-            self.insert_after(self.tail, new_node)
+            self._insert_after(self.tail, new_node)
         else:
-            self.insert_first(new_node)
+            self._insert_first(new_node)
 
     def prepend(self, data):
         """
@@ -76,11 +77,11 @@ class List:
         """
         new_node = Node(data)
         if self.head:
-            self.insert_before(self.head, new_node)
+            self._insert_before(self.head, new_node)
         else:
-            self.insert_first(new_node)
+            self._insert_first(new_node)
 
-    def insert_first(self, new_node):
+    def _insert_first(self, new_node):
         """
         Insert a node into the empty list.
         Raise `NotEmptyError` if the list is not empty.
@@ -91,7 +92,7 @@ class List:
         self.tail = new_node
         self.size += 1
 
-    def insert_before(self, existing_node, new_node):
+    def _insert_before(self, existing_node, new_node):
         """
         Insert a node before a given node.
         """
@@ -105,7 +106,7 @@ class List:
         existing_node.prev = new_node
         self.size += 1
 
-    def insert_after(self, existing_node, new_node):
+    def _insert_after(self, existing_node, new_node):
         """
         Insert a node after a given one.
         """
@@ -147,13 +148,13 @@ class List:
         Erase all elements of the list that
         contain a given data.
         """
-        for node in self.nodes():
+        for node in self._nodes():
             next = node.next
             if node.data == data:
-                self.remove(node)
+                self._remove(node)
             node = next
 
-    def remove(self, node):
+    def _remove(self, node):
         """
         Remove a given node from the list.
         """
@@ -174,20 +175,20 @@ class List:
         node = self.head
         while node:
             if node.data == data:
-                self.rearrange(node)
+                self._rearrange(node)
                 return node
             node = node.next
         return None
 
-    def rearrange(self, node):
+    def _rearrange(self, node):
         """
         Apply self-organizing method.
         """
         return
 
-    def nodes(self):
+    def _nodes(self):
         """
-        Traverse the list nodes in forward direction.
+        Traverse the list _nodes in forward direction.
         """
         node = self.head
         while node:

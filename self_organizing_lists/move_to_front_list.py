@@ -2,10 +2,14 @@ from .doubly_linked_list import List
 
 
 class MoveToFrontList(List):
-    def rearrange(self, node):
+    """
+    Doubly linked list that implements move to front method.
+    """
+
+    def _rearrange(self, node):
         """
         Apply move to front method.
         """
         if node is not self.head:
-            self.remove(node)
-            self.insert_before(self.head, node)
+            self._remove(node)
+            self._insert_before(self.head, node)
