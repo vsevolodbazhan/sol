@@ -23,6 +23,12 @@ class Node:
         return f'{self.data}'
 
 
+class ListEmpty(ValueError):
+    """
+    Raised when a list is empty.
+    """
+
+
 class NotEmptyError(ValueError):
     """
     Raised when a list not is empty.
@@ -196,6 +202,9 @@ class List:
         """
         for item in iterable:
             self.append(item)
+
+    def is_empty(self):
+        return len(self) == 0
 
     def pop_back(self):
         """
