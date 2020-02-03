@@ -167,6 +167,7 @@ class List:
         """
         if self.size > 0:
             raise NotEmptyError('List must be empty')
+
         self.head = new_node
         self.tail = new_node
         self.size += 1
@@ -213,6 +214,9 @@ class List:
             self.append(item)
 
     def is_empty(self):
+        """
+        Check if list is empty.
+        """
         return len(self) == 0
 
     def pop_back(self):
