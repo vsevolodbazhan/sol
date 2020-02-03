@@ -119,6 +119,15 @@ class List:
                 return True
         return False
 
+    def __eq__(self, iterable):
+        """
+        Check if list is equal to `iterable`.
+        """
+        for element, other_element in zip(self, iterable):
+            if element != other_element:
+                return False
+        return True
+
     def append(self, data):
         """
         Insert an element to the end of the list.
