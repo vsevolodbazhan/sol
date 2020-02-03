@@ -44,6 +44,13 @@ class List:
         """
         Alternate constructor for `List`.
         Gets data from a single `iterable` argument.
+
+        >>> a = List.from_iterable([1, 2, 3])
+        >>> print(a)
+        [1, 2, 3]
+        >>> b = List.from_iterable(('Hello', 'World'))
+        >>> print(b)
+        ['Hello', 'World']
         """
         new_list = cls()
         new_list.extend(iterable)
@@ -86,6 +93,12 @@ class List:
     def append(self, data):
         """
         Insert an element to the end of the list.
+
+        >>> a = List()
+        >>> a.append(1)
+        >>> a.append(2)
+        >>> print(a)
+        [1, 2]
         """
         new_node = Node(data)
         if self.tail:
@@ -96,6 +109,12 @@ class List:
     def prepend(self, data):
         """
         Insert an element to the beginning of the list.
+
+        >>> a = List()
+        >>> a.prepend(1)
+        >>> a.prepend(0)
+        >>> print(a)
+        [0, 1]
         """
         new_node = Node(data)
         if self.head:
@@ -145,6 +164,12 @@ class List:
     def extend(self, iterable):
         """
         Insert items from `iterable` to the end of the list.
+
+        >>> a = List()
+        >>> b = [1, 2, 3]
+        >>> a.extend(b)
+        >>> print(a)
+        [1, 2, 3]
         """
         for item in iterable:
             self.append(item)
@@ -152,6 +177,13 @@ class List:
     def pop_back(self):
         """
         Remove the last element of the list.
+
+        >>> a = List.from_iterable([1, 2, 3])
+        >>> print(a)
+        [1, 2, 3]
+        >>> a.pop_back()
+        >>> print(a)
+        [1, 2]
         """
         self.tail = self.tail.prev
         self.tail.next = None
@@ -160,6 +192,13 @@ class List:
     def pop_front(self):
         """
         Remove the first element of the list.
+
+        >>> a = List.from_iterable([1, 2, 3])
+        >>> print(a)
+        [1, 2, 3]
+        >>> a.pop_front()
+        >>> print(a)
+        [2, 3]
         """
         self.head = self.head.next
         self.head.prev = None
@@ -169,6 +208,13 @@ class List:
         """
         Erase all elements of the list that
         contain a given data.
+
+        >>> a = List.from_iterable([1, 2, 3, 3, 3, 4])
+        >>> print(a)
+        [1, 2, 3, 3, 3, 4]
+        >>> a.erase(3)
+        >>> print(a)
+        [1, 2, 4]
         """
         for node in self._nodes():
             next = node.next
