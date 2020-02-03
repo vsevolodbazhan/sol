@@ -18,6 +18,10 @@ class List:
 
     @classmethod
     def from_iterable(cls, iterable):
+        """
+        Alternate constructor for `List`.
+        Gets data from a single `iterable` argument.
+        """
         new_list = cls()
         new_list.extend(iterable)
         return new_list
