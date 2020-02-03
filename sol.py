@@ -1,4 +1,26 @@
-from ._node import Node
+__all__ = ['List', 'MoveToFrontList', 'TransposeList']
+
+
+class Node:
+    def __init__(self, data, next=None, prev=None):
+        self.data = data
+        self.next = next
+        self.prev = prev
+
+    def __repr__(self):
+        """
+        Return an unambiguous representation of an object.
+        """
+        next = self.next.data if self.next else None
+        prev = self.prev.data if self.prev else None
+        return (f'{self.__class__.__name__}('
+                f'{self.data!r}, next={next!r}, prev={prev!r})')
+
+    def __str__(self):
+        """
+        Return value as a string.
+        """
+        return f'{self.data}'
 
 
 class NotEmptyError(ValueError):
@@ -194,3 +216,37 @@ class List:
         while node:
             yield node
             node = node.next
+
+
+class MoveToFrontList(List):
+    """
+    Doubly linked list that implements move to front method.
+    """
+
+    def _rearrange(self, node):
+        """
+        Apply move to front method.
+        """
+        if node is not self.head:
+            self._remove(node)
+            self._insert_before(self.head, node)
+
+
+class TransposeList(List):
+    """
+    Doubly linked list that implements transpose method.
+    """
+
+    def _rearrange(self, node):
+        """
+        Apply transpose method.
+        """
+        if node is not self.head:
+            prev = node.prev
+            self._remove(node)
+            self._insert_before(prev, node)
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
