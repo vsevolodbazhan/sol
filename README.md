@@ -8,11 +8,13 @@ Implementation of [self-organizing](https://en.wikipedia.org/wiki/Self-organizin
 
 ## Installation
 
-```python
+```bash
 pip install solists
 ```
 
 ## Documentation
+
+Documentation is available online at https://vsevolodbazhan.github.io/Sol/ and in the `docs` directory.
 
 ## Contributing
 
