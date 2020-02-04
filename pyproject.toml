@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "sol"
+name = "solists"
 version = "0.1.0"
 description = "Implementation of self-organizing lists."
 authors = ["Vsevolod Bazhan <vsevozhan@yandex.ru>"]

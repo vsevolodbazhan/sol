@@ -1,4 +1,4 @@
-PROJECT = sol
+PROJECT = solists
 DOCS = docs
 
 install:

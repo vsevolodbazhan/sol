@@ -1,16 +1,16 @@
 import unittest
 import doctest
-import sol
+import solists
 
 
 def load_tests(loader, tests, ignore):
-    tests.addTests(doctest.DocTestSuite(sol.transpose_list))
+    tests.addTests(doctest.DocTestSuite(solists.transpose_list))
     return tests
 
 
 class TestMoveToFrontList(unittest.TestCase):
     def test_contains(self):
-        a = sol.MoveToFrontList()
+        a = solists.MoveToFrontList()
         self.assertFalse(1 in a)
 
         a.extend([1, 2, 3])

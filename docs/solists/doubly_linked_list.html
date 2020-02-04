@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.7.4" />
-<title>sol.doubly_linked_list API documentation</title>
+<title>solists.doubly_linked_list API documentation</title>
 <meta name="description" content="" />
 <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
@@ -17,7 +17,7 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>sol.doubly_linked_list</code></h1>
+<h1 class="title">Module <code>solists.doubly_linked_list</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
@@ -25,7 +25,6 @@
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">from ._node import Node
-
 
 __all__ = [&#39;List&#39;]
 
@@ -335,7 +334,7 @@ class List:
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="sol.doubly_linked_list.List"><code class="flex name class">
+<dt id="solists.doubly_linked_list.List"><code class="flex name class">
 <span>class <span class="ident">List</span></span>
 </code></dt>
 <dd>
@@ -641,16 +640,16 @@ False
 </details>
 <h3>Subclasses</h3>
 <ul class="hlist">
-<li><a title="sol.move_to_front_list.MoveToFrontList" href="move_to_front_list.html#sol.move_to_front_list.MoveToFrontList">MoveToFrontList</a></li>
-<li><a title="sol.transpose_list.TransposeList" href="transpose_list.html#sol.transpose_list.TransposeList">TransposeList</a></li>
+<li><a title="solists.move_to_front_list.MoveToFrontList" href="move_to_front_list.html#solists.move_to_front_list.MoveToFrontList">MoveToFrontList</a></li>
+<li><a title="solists.transpose_list.TransposeList" href="transpose_list.html#solists.transpose_list.TransposeList">TransposeList</a></li>
 </ul>
 <h3>Static methods</h3>
 <dl>
-<dt id="sol.doubly_linked_list.List.from_iterable"><code class="name flex">
+<dt id="solists.doubly_linked_list.List.from_iterable"><code class="name flex">
 <span>def <span class="ident">from_iterable</span></span>(<span>iterable)</span>
 </code></dt>
 <dd>
-<section class="desc"><p>Alternate constructor for <a title="sol.doubly_linked_list.List" href="#sol.doubly_linked_list.List"><code>List</code></a>.
+<section class="desc"><p>Alternate constructor for <a title="solists.doubly_linked_list.List" href="#solists.doubly_linked_list.List"><code>List</code></a>.
 Gets data from a single <code>iterable</code> argument.</p>
 <pre><code>&gt;&gt;&gt; a = List.from_iterable([1, 2, 3])
 &gt;&gt;&gt; print(a)
@@ -684,7 +683,7 @@ def from_iterable(cls, iterable):
 </dl>
 <h3>Methods</h3>
 <dl>
-<dt id="sol.doubly_linked_list.List.append"><code class="name flex">
+<dt id="solists.doubly_linked_list.List.append"><code class="name flex">
 <span>def <span class="ident">append</span></span>(<span>self, data)</span>
 </code></dt>
 <dd>
@@ -716,7 +715,7 @@ def from_iterable(cls, iterable):
         self._insert_first(new_node)</code></pre>
 </details>
 </dd>
-<dt id="sol.doubly_linked_list.List.erase"><code class="name flex">
+<dt id="solists.doubly_linked_list.List.erase"><code class="name flex">
 <span>def <span class="ident">erase</span></span>(<span>self, data)</span>
 </code></dt>
 <dd>
@@ -752,7 +751,7 @@ contain a given data.</p>
         node = next</code></pre>
 </details>
 </dd>
-<dt id="sol.doubly_linked_list.List.extend"><code class="name flex">
+<dt id="solists.doubly_linked_list.List.extend"><code class="name flex">
 <span>def <span class="ident">extend</span></span>(<span>self, iterable)</span>
 </code></dt>
 <dd>
@@ -781,7 +780,7 @@ contain a given data.</p>
         self.append(item)</code></pre>
 </details>
 </dd>
-<dt id="sol.doubly_linked_list.List.is_empty"><code class="name flex">
+<dt id="solists.doubly_linked_list.List.is_empty"><code class="name flex">
 <span>def <span class="ident">is_empty</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -797,7 +796,7 @@ contain a given data.</p>
     return len(self) == 0</code></pre>
 </details>
 </dd>
-<dt id="sol.doubly_linked_list.List.pop_back"><code class="name flex">
+<dt id="solists.doubly_linked_list.List.pop_back"><code class="name flex">
 <span>def <span class="ident">pop_back</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -835,7 +834,7 @@ contain a given data.</p>
         self.size -= 1</code></pre>
 </details>
 </dd>
-<dt id="sol.doubly_linked_list.List.pop_front"><code class="name flex">
+<dt id="solists.doubly_linked_list.List.pop_front"><code class="name flex">
 <span>def <span class="ident">pop_front</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -873,7 +872,7 @@ contain a given data.</p>
         self.size -= 1</code></pre>
 </details>
 </dd>
-<dt id="sol.doubly_linked_list.List.prepend"><code class="name flex">
+<dt id="solists.doubly_linked_list.List.prepend"><code class="name flex">
 <span>def <span class="ident">prepend</span></span>(<span>self, data)</span>
 </code></dt>
 <dd>
@@ -918,22 +917,22 @@ contain a given data.</p>
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="sol" href="index.html">sol</a></code></li>
+<li><code><a title="solists" href="index.html">solists</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="sol.doubly_linked_list.List" href="#sol.doubly_linked_list.List">List</a></code></h4>
+<h4><code><a title="solists.doubly_linked_list.List" href="#solists.doubly_linked_list.List">List</a></code></h4>
 <ul class="two-column">
-<li><code><a title="sol.doubly_linked_list.List.append" href="#sol.doubly_linked_list.List.append">append</a></code></li>
-<li><code><a title="sol.doubly_linked_list.List.erase" href="#sol.doubly_linked_list.List.erase">erase</a></code></li>
-<li><code><a title="sol.doubly_linked_list.List.extend" href="#sol.doubly_linked_list.List.extend">extend</a></code></li>
-<li><code><a title="sol.doubly_linked_list.List.from_iterable" href="#sol.doubly_linked_list.List.from_iterable">from_iterable</a></code></li>
-<li><code><a title="sol.doubly_linked_list.List.is_empty" href="#sol.doubly_linked_list.List.is_empty">is_empty</a></code></li>
-<li><code><a title="sol.doubly_linked_list.List.pop_back" href="#sol.doubly_linked_list.List.pop_back">pop_back</a></code></li>
-<li><code><a title="sol.doubly_linked_list.List.pop_front" href="#sol.doubly_linked_list.List.pop_front">pop_front</a></code></li>
-<li><code><a title="sol.doubly_linked_list.List.prepend" href="#sol.doubly_linked_list.List.prepend">prepend</a></code></li>
+<li><code><a title="solists.doubly_linked_list.List.append" href="#solists.doubly_linked_list.List.append">append</a></code></li>
+<li><code><a title="solists.doubly_linked_list.List.erase" href="#solists.doubly_linked_list.List.erase">erase</a></code></li>
+<li><code><a title="solists.doubly_linked_list.List.extend" href="#solists.doubly_linked_list.List.extend">extend</a></code></li>
+<li><code><a title="solists.doubly_linked_list.List.from_iterable" href="#solists.doubly_linked_list.List.from_iterable">from_iterable</a></code></li>
+<li><code><a title="solists.doubly_linked_list.List.is_empty" href="#solists.doubly_linked_list.List.is_empty">is_empty</a></code></li>
+<li><code><a title="solists.doubly_linked_list.List.pop_back" href="#solists.doubly_linked_list.List.pop_back">pop_back</a></code></li>
+<li><code><a title="solists.doubly_linked_list.List.pop_front" href="#solists.doubly_linked_list.List.pop_front">pop_front</a></code></li>
+<li><code><a title="solists.doubly_linked_list.List.prepend" href="#solists.doubly_linked_list.List.prepend">prepend</a></code></li>
 </ul>
 </li>
 </ul>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.7.4" />
-<title>sol.move_to_front_list API documentation</title>
+<title>solists.transpose_list API documentation</title>
 <meta name="description" content="" />
 <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
@@ -17,7 +17,7 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>sol.move_to_front_list</code></h1>
+<h1 class="title">Module <code>solists.transpose_list</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
@@ -26,37 +26,38 @@
 </summary>
 <pre><code class="python">from .doubly_linked_list import List
 
-__all__ = [&#39;MoveToFrontList&#39;]
+__all__ = [&#39;TransposeList&#39;]
 
 
-class MoveToFrontList(List):
+class TransposeList(List):
     &#34;&#34;&#34;
-    Doubly linked list that implements move to front method.
+    Doubly linked list that implements transpose method.
 
-    &gt;&gt;&gt; a = MoveToFrontList.from_iterable([1, 2, 3])
+    &gt;&gt;&gt; a = TransposeList.from_iterable([1, 2, 3])
     &gt;&gt;&gt; print(a)
     [1, 2, 3]
     &gt;&gt;&gt; 3 in a
     True
     &gt;&gt;&gt; print(a)
-    [3, 1, 2]
+    [1, 3, 2]
     &gt;&gt;&gt; 2 in a
     True
     &gt;&gt;&gt; print(a)
-    [2, 3, 1]
+    [1, 2, 3]
     &gt;&gt;&gt; 5 in a
     False
     &gt;&gt;&gt; print(a)
-    [2, 3, 1]
+    [1, 2, 3]
     &#34;&#34;&#34;
 
     def _rearrange(self, node):
         &#34;&#34;&#34;
-        Apply move to front method.
+        Apply transpose method.
         &#34;&#34;&#34;
         if node is not self.head:
+            prev = node.prev
             self._remove(node)
-            self._insert_before(self.head, node)</code></pre>
+            self._insert_before(prev, node)</code></pre>
 </details>
 </section>
 <section>
@@ -68,76 +69,77 @@ class MoveToFrontList(List):
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="sol.move_to_front_list.MoveToFrontList"><code class="flex name class">
-<span>class <span class="ident">MoveToFrontList</span></span>
+<dt id="solists.transpose_list.TransposeList"><code class="flex name class">
+<span>class <span class="ident">TransposeList</span></span>
 </code></dt>
 <dd>
-<section class="desc"><p>Doubly linked list that implements move to front method.</p>
-<pre><code>&gt;&gt;&gt; a = MoveToFrontList.from_iterable([1, 2, 3])
+<section class="desc"><p>Doubly linked list that implements transpose method.</p>
+<pre><code>&gt;&gt;&gt; a = TransposeList.from_iterable([1, 2, 3])
 &gt;&gt;&gt; print(a)
 [1, 2, 3]
 &gt;&gt;&gt; 3 in a
 True
 &gt;&gt;&gt; print(a)
-[3, 1, 2]
+[1, 3, 2]
 &gt;&gt;&gt; 2 in a
 True
 &gt;&gt;&gt; print(a)
-[2, 3, 1]
+[1, 2, 3]
 &gt;&gt;&gt; 5 in a
 False
 &gt;&gt;&gt; print(a)
-[2, 3, 1]
+[1, 2, 3]
 </code></pre></section>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class MoveToFrontList(List):
+<pre><code class="python">class TransposeList(List):
     &#34;&#34;&#34;
-    Doubly linked list that implements move to front method.
+    Doubly linked list that implements transpose method.
 
-    &gt;&gt;&gt; a = MoveToFrontList.from_iterable([1, 2, 3])
+    &gt;&gt;&gt; a = TransposeList.from_iterable([1, 2, 3])
     &gt;&gt;&gt; print(a)
     [1, 2, 3]
     &gt;&gt;&gt; 3 in a
     True
     &gt;&gt;&gt; print(a)
-    [3, 1, 2]
+    [1, 3, 2]
     &gt;&gt;&gt; 2 in a
     True
     &gt;&gt;&gt; print(a)
-    [2, 3, 1]
+    [1, 2, 3]
     &gt;&gt;&gt; 5 in a
     False
     &gt;&gt;&gt; print(a)
-    [2, 3, 1]
+    [1, 2, 3]
     &#34;&#34;&#34;
 
     def _rearrange(self, node):
         &#34;&#34;&#34;
-        Apply move to front method.
+        Apply transpose method.
         &#34;&#34;&#34;
         if node is not self.head:
+            prev = node.prev
             self._remove(node)
-            self._insert_before(self.head, node)</code></pre>
+            self._insert_before(prev, node)</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li><a title="sol.doubly_linked_list.List" href="doubly_linked_list.html#sol.doubly_linked_list.List">List</a></li>
+<li><a title="solists.doubly_linked_list.List" href="doubly_linked_list.html#solists.doubly_linked_list.List">List</a></li>
 </ul>
 <h3>Inherited members</h3>
 <ul class="hlist">
-<li><code><b><a title="sol.doubly_linked_list.List" href="doubly_linked_list.html#sol.doubly_linked_list.List">List</a></b></code>:
+<li><code><b><a title="solists.doubly_linked_list.List" href="doubly_linked_list.html#solists.doubly_linked_list.List">List</a></b></code>:
 <ul class="hlist">
-<li><code><a title="sol.doubly_linked_list.List.append" href="doubly_linked_list.html#sol.doubly_linked_list.List.append">append</a></code></li>
-<li><code><a title="sol.doubly_linked_list.List.erase" href="doubly_linked_list.html#sol.doubly_linked_list.List.erase">erase</a></code></li>
-<li><code><a title="sol.doubly_linked_list.List.extend" href="doubly_linked_list.html#sol.doubly_linked_list.List.extend">extend</a></code></li>
-<li><code><a title="sol.doubly_linked_list.List.from_iterable" href="doubly_linked_list.html#sol.doubly_linked_list.List.from_iterable">from_iterable</a></code></li>
-<li><code><a title="sol.doubly_linked_list.List.is_empty" href="doubly_linked_list.html#sol.doubly_linked_list.List.is_empty">is_empty</a></code></li>
-<li><code><a title="sol.doubly_linked_list.List.pop_back" href="doubly_linked_list.html#sol.doubly_linked_list.List.pop_back">pop_back</a></code></li>
-<li><code><a title="sol.doubly_linked_list.List.pop_front" href="doubly_linked_list.html#sol.doubly_linked_list.List.pop_front">pop_front</a></code></li>
-<li><code><a title="sol.doubly_linked_list.List.prepend" href="doubly_linked_list.html#sol.doubly_linked_list.List.prepend">prepend</a></code></li>
+<li><code><a title="solists.doubly_linked_list.List.append" href="doubly_linked_list.html#solists.doubly_linked_list.List.append">append</a></code></li>
+<li><code><a title="solists.doubly_linked_list.List.erase" href="doubly_linked_list.html#solists.doubly_linked_list.List.erase">erase</a></code></li>
+<li><code><a title="solists.doubly_linked_list.List.extend" href="doubly_linked_list.html#solists.doubly_linked_list.List.extend">extend</a></code></li>
+<li><code><a title="solists.doubly_linked_list.List.from_iterable" href="doubly_linked_list.html#solists.doubly_linked_list.List.from_iterable">from_iterable</a></code></li>
+<li><code><a title="solists.doubly_linked_list.List.is_empty" href="doubly_linked_list.html#solists.doubly_linked_list.List.is_empty">is_empty</a></code></li>
+<li><code><a title="solists.doubly_linked_list.List.pop_back" href="doubly_linked_list.html#solists.doubly_linked_list.List.pop_back">pop_back</a></code></li>
+<li><code><a title="solists.doubly_linked_list.List.pop_front" href="doubly_linked_list.html#solists.doubly_linked_list.List.pop_front">pop_front</a></code></li>
+<li><code><a title="solists.doubly_linked_list.List.prepend" href="doubly_linked_list.html#solists.doubly_linked_list.List.prepend">prepend</a></code></li>
 </ul>
 </li>
 </ul>
@@ -153,13 +155,13 @@ False
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="sol" href="index.html">sol</a></code></li>
+<li><code><a title="solists" href="index.html">solists</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="sol.move_to_front_list.MoveToFrontList" href="#sol.move_to_front_list.MoveToFrontList">MoveToFrontList</a></code></h4>
+<h4><code><a title="solists.transpose_list.TransposeList" href="#solists.transpose_list.TransposeList">TransposeList</a></code></h4>
 </li>
 </ul>
 </li>

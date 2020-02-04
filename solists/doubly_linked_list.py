@@ -1,6 +1,5 @@
 from ._node import Node
 
-
 __all__ = ['List']
 
 

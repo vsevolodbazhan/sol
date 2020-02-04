@@ -1,5 +1,5 @@
 """
-`sol` provides implementation of [self-organizing](https://en.wikipedia.org/wiki/Self-organizing_list) linked lists.
+`solists` provides implementation of [self-organizing](https://en.wikipedia.org/wiki/Self-organizing_list) linked lists.
 
 ## What is a *self-organizing* list?
 
@@ -7,7 +7,7 @@ A standard linked list is a data structure that is highly *efficient* at inserti
 
 Self-organization methods are aimed at improving *average* access time by rearranging elements of the list so that the most frequently accessed ones are located at the start of the list.
 
-Currently `sol` supports two self-organizing techniques.
+Currently `solists` supports two self-organizing techniques.
 
 ### Move to front
 
@@ -20,19 +20,19 @@ After each successful search operation, the found element is being swapped with 
 ## Usage
 
 ```python
-import sol
+import solists
 
 l = [1, 2, 3]
 
-a = sol.List()
+a = solists.List()
 a.append(1)
 a.append(2)
 a.append(3)
 
-b = sol.MoveToFrontList()
+b = solists.MoveToFrontList()
 b.extend(l)
 
-c = sol.TransposeList.from_iterable(l)
+c = solists.TransposeList.from_iterable(l)
 
 3 in a  # [1, 2, 3]
 3 in b  # [3, 1, 2]
