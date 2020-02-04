@@ -5,10 +5,10 @@ test:
 	@poetry run python -m unittest
 
 doc:
-	@pdoc --html -o docs sol
+	@poetry run pdoc --html -o docs sol
 
 selfcheck:
-	poetry check
+	@poetry check
 
 check: selfcheck test
 

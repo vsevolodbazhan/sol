@@ -1,0 +1,16 @@
+[[package]]
+category = "main"
+description = "A simple program and library to auto generate API documentation for Python modules."
+name = "pdoc"
+optional = false
+python-versions = "*"
+version = "0.3.2"
+
+[metadata]
+content-hash = "487064705938aee3a4eb6c9dc14a216cf901f2cd15f91dd9b7b908006021ae94"
+python-versions = "^3.7"
+
+[metadata.files]
+pdoc = [
+    {file = "pdoc-0.3.2.tar.gz", hash = "sha256:7835909580d5a14a06bd3de4416cf17f86a146ecb12eeb5cd83d9a93d03e6d27"},
+]
