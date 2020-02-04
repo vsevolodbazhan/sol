@@ -298,8 +298,3 @@ class List:
         while node:
             yield node
             node = node.next
-
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()

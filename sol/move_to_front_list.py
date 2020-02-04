@@ -31,8 +31,3 @@ class MoveToFrontList(List):
         if node is not self.head:
             self._remove(node)
             self._insert_before(self.head, node)
-
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()

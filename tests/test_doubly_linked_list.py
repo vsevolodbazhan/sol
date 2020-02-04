@@ -1,5 +1,11 @@
 import unittest
+import doctest
 import sol
+
+
+def load_tests(loader, tests, ignore):
+    tests.addTests(doctest.DocTestSuite(sol.doubly_linked_list))
+    return tests
 
 
 class TestList(unittest.TestCase):
@@ -141,45 +147,3 @@ class TestList(unittest.TestCase):
 
         self.assertFalse(4 in a)
         self.assertEqual(a, [1, 2, 3])
-
-
-class TestMoveToFrontList(unittest.TestCase):
-    def test_contains(self):
-        a = sol.MoveToFrontList()
-        self.assertFalse(1 in a)
-
-        a.extend([1, 2, 3])
-        self.assertTrue(1 in a)
-        self.assertEqual(a, [1, 2, 3])
-
-        self.assertTrue(2 in a)
-        self.assertEqual(a, [2, 1, 3])
-
-        self.assertTrue(3 in a)
-        self.assertEqual(a, [3, 2, 1])
-
-        self.assertFalse(4 in a)
-        self.assertEqual(a, [3, 2, 1])
-
-
-class TestTransposeList(unittest.TestCase):
-    def test_contains(self):
-        a = sol.TransposeList()
-        self.assertFalse(1 in a)
-
-        a.extend([1, 2, 3])
-        self.assertTrue(1 in a)
-        self.assertEqual(a, [1, 2, 3])
-
-        self.assertTrue(2 in a)
-        self.assertEqual(a, [2, 1, 3])
-
-        self.assertTrue(3 in a)
-        self.assertEqual(a, [2, 3, 1])
-
-        self.assertFalse(4 in a)
-        self.assertEqual(a, [2, 3, 1])
-
-
-if __name__ == "__main__":
-    unittest.main()
