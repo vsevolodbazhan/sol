@@ -1,0 +1,950 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.4" />
+<title>sol.doubly_linked_list API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>sol.doubly_linked_list</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from ._node import Node
+
+
+__all__ = [&#39;List&#39;]
+
+
+class EmptyError(ValueError):
+    &#34;&#34;&#34;
+    Raised when a list is empty.
+    &#34;&#34;&#34;
+
+
+class NotEmptyError(ValueError):
+    &#34;&#34;&#34;
+    Raised when a list not is empty.
+    &#34;&#34;&#34;
+
+
+class List:
+    &#34;&#34;&#34;
+    Doubly linked list.
+
+    &gt;&gt;&gt; a = List.from_iterable([1, 2, 3])
+    &gt;&gt;&gt; print(a)
+    [1, 2, 3]
+    &gt;&gt;&gt; 1 in a
+    True
+    &gt;&gt;&gt; print(a)
+    [1, 2, 3]
+    &gt;&gt;&gt; 5 in a
+    False
+    &gt;&gt;&gt; print(a)
+    [1, 2, 3]
+    &#34;&#34;&#34;
+
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.size = 0
+
+    @classmethod
+    def from_iterable(cls, iterable):
+        &#34;&#34;&#34;
+        Alternate constructor for `List`.
+        Gets data from a single `iterable` argument.
+
+        &gt;&gt;&gt; a = List.from_iterable([1, 2, 3])
+        &gt;&gt;&gt; print(a)
+        [1, 2, 3]
+        &gt;&gt;&gt; b = List.from_iterable((&#39;Hello&#39;, &#39;World&#39;))
+        &gt;&gt;&gt; print(b)
+        [&#39;Hello&#39;, &#39;World&#39;]
+        &#34;&#34;&#34;
+        new_list = cls()
+        new_list.extend(iterable)
+        return new_list
+
+    def __repr__(self):
+        &#34;&#34;&#34;
+        Return an unambiguous representation of an object.
+        &#34;&#34;&#34;
+        return (f&#39;{self.__class__.__name__}(&#39;
+                f&#39;head={self.head!r}, tail={self.tail!r})&#39;)
+
+    def __str__(self):
+        &#34;&#34;&#34;
+        Return elements of the list as a string.
+        &#34;&#34;&#34;
+        return f&#39;{[element for element in self]}&#39;
+
+    def __iter__(self):
+        &#34;&#34;&#34;
+        Traverse the list in forward direction.
+        &#34;&#34;&#34;
+        node = self.head
+        while node:
+            yield node.data
+            node = node.next
+
+    def __reversed__(self):
+        &#34;&#34;&#34;
+        Traverse the list in reverse direction.
+        &#34;&#34;&#34;
+        node = self.tail
+        while node:
+            yield node.data
+            node = node.prev
+
+    def __len__(self):
+        return self.size
+
+    def __contains__(self, data):
+        &#34;&#34;&#34;
+        Check if the list contains an element with
+        a given data.
+        &#34;&#34;&#34;
+        for node in self._nodes():
+            if node.data == data:
+                self._rearrange(node)
+                return True
+        return False
+
+    def __eq__(self, iterable):
+        &#34;&#34;&#34;
+        Check if list is equal to `iterable`.
+        &#34;&#34;&#34;
+        for element, other_element in zip(self, iterable):
+            if element != other_element:
+                return False
+        return True
+
+    def append(self, data):
+        &#34;&#34;&#34;
+        Insert an element to the end of the list.
+
+        &gt;&gt;&gt; a = List()
+        &gt;&gt;&gt; a.append(1)
+        &gt;&gt;&gt; a.append(2)
+        &gt;&gt;&gt; print(a)
+        [1, 2]
+        &#34;&#34;&#34;
+        new_node = Node(data)
+        if self.tail:
+            self._insert_after(self.tail, new_node)
+        else:
+            self._insert_first(new_node)
+
+    def prepend(self, data):
+        &#34;&#34;&#34;
+        Insert an element to the beginning of the list.
+
+        &gt;&gt;&gt; a = List()
+        &gt;&gt;&gt; a.prepend(1)
+        &gt;&gt;&gt; a.prepend(0)
+        &gt;&gt;&gt; print(a)
+        [0, 1]
+        &#34;&#34;&#34;
+        new_node = Node(data)
+        if self.head:
+            self._insert_before(self.head, new_node)
+        else:
+            self._insert_first(new_node)
+
+    def _insert_first(self, new_node):
+        &#34;&#34;&#34;
+        Insert a node into the empty list.
+        Raise `NotEmptyError` if the list is not empty.
+        &#34;&#34;&#34;
+        if self.size &gt; 0:
+            raise NotEmptyError(&#39;List must be empty&#39;)
+
+        self.head = new_node
+        self.tail = new_node
+        self.size += 1
+
+    def _insert_before(self, existing_node, new_node):
+        &#34;&#34;&#34;
+        Insert a node before a given node.
+        &#34;&#34;&#34;
+        new_node.next = existing_node
+        if existing_node is self.head:
+            new_node.prev = None
+            self.head = new_node
+        else:
+            new_node.prev = existing_node.prev
+            existing_node.prev.next = new_node
+        existing_node.prev = new_node
+        self.size += 1
+
+    def _insert_after(self, existing_node, new_node):
+        &#34;&#34;&#34;
+        Insert a node after a given one.
+        &#34;&#34;&#34;
+        new_node.prev = existing_node
+        if existing_node is self.tail:
+            new_node.next = None
+            self.tail = new_node
+        else:
+            new_node.next = existing_node.next
+            existing_node.next.prev = new_node
+        existing_node.next = new_node
+        self.size += 1
+
+    def extend(self, iterable):
+        &#34;&#34;&#34;
+        Insert items from `iterable` to the end of the list.
+
+        &gt;&gt;&gt; a = List()
+        &gt;&gt;&gt; b = [1, 2, 3]
+        &gt;&gt;&gt; a.extend(b)
+        &gt;&gt;&gt; print(a)
+        [1, 2, 3]
+        &#34;&#34;&#34;
+        for item in iterable:
+            self.append(item)
+
+    def is_empty(self):
+        &#34;&#34;&#34;
+        Check if list is empty.
+        &#34;&#34;&#34;
+        return len(self) == 0
+
+    def pop_back(self):
+        &#34;&#34;&#34;
+        Remove the last element of the list.
+
+        &gt;&gt;&gt; a = List.from_iterable([1, 2, 3])
+        &gt;&gt;&gt; print(a)
+        [1, 2, 3]
+        &gt;&gt;&gt; a.pop_back()
+        &gt;&gt;&gt; print(a)
+        [1, 2]
+        &#34;&#34;&#34;
+        if self.is_empty():
+            raise EmptyError(&#39;List must not be empty&#39;)
+
+        if self.size == 1:
+            self._remove_last()
+        else:
+            self.tail = self.tail.prev
+            self.tail.next = None
+            self.size -= 1
+
+    def pop_front(self):
+        &#34;&#34;&#34;
+        Remove the first element of the list.
+
+        &gt;&gt;&gt; a = List.from_iterable([1, 2, 3])
+        &gt;&gt;&gt; print(a)
+        [1, 2, 3]
+        &gt;&gt;&gt; a.pop_front()
+        &gt;&gt;&gt; print(a)
+        [2, 3]
+        &#34;&#34;&#34;
+        if self.is_empty():
+            raise EmptyError(&#39;List must not be empty&#39;)
+
+        if self.size == 1:
+            self._remove_last()
+        else:
+            self.head = self.head.next
+            self.head.prev = None
+            self.size -= 1
+
+    def erase(self, data):
+        &#34;&#34;&#34;
+        Erase all elements of the list that
+        contain a given data.
+
+        &gt;&gt;&gt; a = List.from_iterable([1, 2, 3, 3, 3, 4])
+        &gt;&gt;&gt; print(a)
+        [1, 2, 3, 3, 3, 4]
+        &gt;&gt;&gt; a.erase(3)
+        &gt;&gt;&gt; print(a)
+        [1, 2, 4]
+        &#34;&#34;&#34;
+        for node in self._nodes():
+            next = node.next
+            if node.data == data:
+                self._remove(node)
+            node = next
+
+    def _remove(self, node):
+        &#34;&#34;&#34;
+        Remove a given node from the list.
+        &#34;&#34;&#34;
+        if node is self.head:
+            self.pop_front()
+        elif node is self.tail:
+            self.pop_back()
+        else:
+            node.next.prev = node.prev
+            node.prev.next = node.next
+            self.size -= 1
+
+    def _remove_last(self):
+        &#34;&#34;&#34;
+        Remove the only node in the list.
+        &#34;&#34;&#34;
+        if self.size &gt; 1:
+            raise ValueError(&#39;List has more than one node&#39;)
+
+        self.head = None
+        self.tail = None
+        self.size = 0
+
+    def _rearrange(self, node):
+        &#34;&#34;&#34;
+        Apply self-organizing method.
+        &#34;&#34;&#34;
+        return
+
+    def _nodes(self):
+        &#34;&#34;&#34;
+        Traverse the list _nodes in forward direction.
+        &#34;&#34;&#34;
+        node = self.head
+        while node:
+            yield node
+            node = node.next</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="sol.doubly_linked_list.List"><code class="flex name class">
+<span>class <span class="ident">List</span></span>
+</code></dt>
+<dd>
+<section class="desc"><p>Doubly linked list.</p>
+<pre><code>&gt;&gt;&gt; a = List.from_iterable([1, 2, 3])
+&gt;&gt;&gt; print(a)
+[1, 2, 3]
+&gt;&gt;&gt; 1 in a
+True
+&gt;&gt;&gt; print(a)
+[1, 2, 3]
+&gt;&gt;&gt; 5 in a
+False
+&gt;&gt;&gt; print(a)
+[1, 2, 3]
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class List:
+    &#34;&#34;&#34;
+    Doubly linked list.
+
+    &gt;&gt;&gt; a = List.from_iterable([1, 2, 3])
+    &gt;&gt;&gt; print(a)
+    [1, 2, 3]
+    &gt;&gt;&gt; 1 in a
+    True
+    &gt;&gt;&gt; print(a)
+    [1, 2, 3]
+    &gt;&gt;&gt; 5 in a
+    False
+    &gt;&gt;&gt; print(a)
+    [1, 2, 3]
+    &#34;&#34;&#34;
+
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.size = 0
+
+    @classmethod
+    def from_iterable(cls, iterable):
+        &#34;&#34;&#34;
+        Alternate constructor for `List`.
+        Gets data from a single `iterable` argument.
+
+        &gt;&gt;&gt; a = List.from_iterable([1, 2, 3])
+        &gt;&gt;&gt; print(a)
+        [1, 2, 3]
+        &gt;&gt;&gt; b = List.from_iterable((&#39;Hello&#39;, &#39;World&#39;))
+        &gt;&gt;&gt; print(b)
+        [&#39;Hello&#39;, &#39;World&#39;]
+        &#34;&#34;&#34;
+        new_list = cls()
+        new_list.extend(iterable)
+        return new_list
+
+    def __repr__(self):
+        &#34;&#34;&#34;
+        Return an unambiguous representation of an object.
+        &#34;&#34;&#34;
+        return (f&#39;{self.__class__.__name__}(&#39;
+                f&#39;head={self.head!r}, tail={self.tail!r})&#39;)
+
+    def __str__(self):
+        &#34;&#34;&#34;
+        Return elements of the list as a string.
+        &#34;&#34;&#34;
+        return f&#39;{[element for element in self]}&#39;
+
+    def __iter__(self):
+        &#34;&#34;&#34;
+        Traverse the list in forward direction.
+        &#34;&#34;&#34;
+        node = self.head
+        while node:
+            yield node.data
+            node = node.next
+
+    def __reversed__(self):
+        &#34;&#34;&#34;
+        Traverse the list in reverse direction.
+        &#34;&#34;&#34;
+        node = self.tail
+        while node:
+            yield node.data
+            node = node.prev
+
+    def __len__(self):
+        return self.size
+
+    def __contains__(self, data):
+        &#34;&#34;&#34;
+        Check if the list contains an element with
+        a given data.
+        &#34;&#34;&#34;
+        for node in self._nodes():
+            if node.data == data:
+                self._rearrange(node)
+                return True
+        return False
+
+    def __eq__(self, iterable):
+        &#34;&#34;&#34;
+        Check if list is equal to `iterable`.
+        &#34;&#34;&#34;
+        for element, other_element in zip(self, iterable):
+            if element != other_element:
+                return False
+        return True
+
+    def append(self, data):
+        &#34;&#34;&#34;
+        Insert an element to the end of the list.
+
+        &gt;&gt;&gt; a = List()
+        &gt;&gt;&gt; a.append(1)
+        &gt;&gt;&gt; a.append(2)
+        &gt;&gt;&gt; print(a)
+        [1, 2]
+        &#34;&#34;&#34;
+        new_node = Node(data)
+        if self.tail:
+            self._insert_after(self.tail, new_node)
+        else:
+            self._insert_first(new_node)
+
+    def prepend(self, data):
+        &#34;&#34;&#34;
+        Insert an element to the beginning of the list.
+
+        &gt;&gt;&gt; a = List()
+        &gt;&gt;&gt; a.prepend(1)
+        &gt;&gt;&gt; a.prepend(0)
+        &gt;&gt;&gt; print(a)
+        [0, 1]
+        &#34;&#34;&#34;
+        new_node = Node(data)
+        if self.head:
+            self._insert_before(self.head, new_node)
+        else:
+            self._insert_first(new_node)
+
+    def _insert_first(self, new_node):
+        &#34;&#34;&#34;
+        Insert a node into the empty list.
+        Raise `NotEmptyError` if the list is not empty.
+        &#34;&#34;&#34;
+        if self.size &gt; 0:
+            raise NotEmptyError(&#39;List must be empty&#39;)
+
+        self.head = new_node
+        self.tail = new_node
+        self.size += 1
+
+    def _insert_before(self, existing_node, new_node):
+        &#34;&#34;&#34;
+        Insert a node before a given node.
+        &#34;&#34;&#34;
+        new_node.next = existing_node
+        if existing_node is self.head:
+            new_node.prev = None
+            self.head = new_node
+        else:
+            new_node.prev = existing_node.prev
+            existing_node.prev.next = new_node
+        existing_node.prev = new_node
+        self.size += 1
+
+    def _insert_after(self, existing_node, new_node):
+        &#34;&#34;&#34;
+        Insert a node after a given one.
+        &#34;&#34;&#34;
+        new_node.prev = existing_node
+        if existing_node is self.tail:
+            new_node.next = None
+            self.tail = new_node
+        else:
+            new_node.next = existing_node.next
+            existing_node.next.prev = new_node
+        existing_node.next = new_node
+        self.size += 1
+
+    def extend(self, iterable):
+        &#34;&#34;&#34;
+        Insert items from `iterable` to the end of the list.
+
+        &gt;&gt;&gt; a = List()
+        &gt;&gt;&gt; b = [1, 2, 3]
+        &gt;&gt;&gt; a.extend(b)
+        &gt;&gt;&gt; print(a)
+        [1, 2, 3]
+        &#34;&#34;&#34;
+        for item in iterable:
+            self.append(item)
+
+    def is_empty(self):
+        &#34;&#34;&#34;
+        Check if list is empty.
+        &#34;&#34;&#34;
+        return len(self) == 0
+
+    def pop_back(self):
+        &#34;&#34;&#34;
+        Remove the last element of the list.
+
+        &gt;&gt;&gt; a = List.from_iterable([1, 2, 3])
+        &gt;&gt;&gt; print(a)
+        [1, 2, 3]
+        &gt;&gt;&gt; a.pop_back()
+        &gt;&gt;&gt; print(a)
+        [1, 2]
+        &#34;&#34;&#34;
+        if self.is_empty():
+            raise EmptyError(&#39;List must not be empty&#39;)
+
+        if self.size == 1:
+            self._remove_last()
+        else:
+            self.tail = self.tail.prev
+            self.tail.next = None
+            self.size -= 1
+
+    def pop_front(self):
+        &#34;&#34;&#34;
+        Remove the first element of the list.
+
+        &gt;&gt;&gt; a = List.from_iterable([1, 2, 3])
+        &gt;&gt;&gt; print(a)
+        [1, 2, 3]
+        &gt;&gt;&gt; a.pop_front()
+        &gt;&gt;&gt; print(a)
+        [2, 3]
+        &#34;&#34;&#34;
+        if self.is_empty():
+            raise EmptyError(&#39;List must not be empty&#39;)
+
+        if self.size == 1:
+            self._remove_last()
+        else:
+            self.head = self.head.next
+            self.head.prev = None
+            self.size -= 1
+
+    def erase(self, data):
+        &#34;&#34;&#34;
+        Erase all elements of the list that
+        contain a given data.
+
+        &gt;&gt;&gt; a = List.from_iterable([1, 2, 3, 3, 3, 4])
+        &gt;&gt;&gt; print(a)
+        [1, 2, 3, 3, 3, 4]
+        &gt;&gt;&gt; a.erase(3)
+        &gt;&gt;&gt; print(a)
+        [1, 2, 4]
+        &#34;&#34;&#34;
+        for node in self._nodes():
+            next = node.next
+            if node.data == data:
+                self._remove(node)
+            node = next
+
+    def _remove(self, node):
+        &#34;&#34;&#34;
+        Remove a given node from the list.
+        &#34;&#34;&#34;
+        if node is self.head:
+            self.pop_front()
+        elif node is self.tail:
+            self.pop_back()
+        else:
+            node.next.prev = node.prev
+            node.prev.next = node.next
+            self.size -= 1
+
+    def _remove_last(self):
+        &#34;&#34;&#34;
+        Remove the only node in the list.
+        &#34;&#34;&#34;
+        if self.size &gt; 1:
+            raise ValueError(&#39;List has more than one node&#39;)
+
+        self.head = None
+        self.tail = None
+        self.size = 0
+
+    def _rearrange(self, node):
+        &#34;&#34;&#34;
+        Apply self-organizing method.
+        &#34;&#34;&#34;
+        return
+
+    def _nodes(self):
+        &#34;&#34;&#34;
+        Traverse the list _nodes in forward direction.
+        &#34;&#34;&#34;
+        node = self.head
+        while node:
+            yield node
+            node = node.next</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="sol.move_to_front_list.MoveToFrontList" href="move_to_front_list.html#sol.move_to_front_list.MoveToFrontList">MoveToFrontList</a></li>
+<li><a title="sol.transpose_list.TransposeList" href="transpose_list.html#sol.transpose_list.TransposeList">TransposeList</a></li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="sol.doubly_linked_list.List.from_iterable"><code class="name flex">
+<span>def <span class="ident">from_iterable</span></span>(<span>iterable)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Alternate constructor for <a title="sol.doubly_linked_list.List" href="#sol.doubly_linked_list.List"><code>List</code></a>.
+Gets data from a single <code>iterable</code> argument.</p>
+<pre><code>&gt;&gt;&gt; a = List.from_iterable([1, 2, 3])
+&gt;&gt;&gt; print(a)
+[1, 2, 3]
+&gt;&gt;&gt; b = List.from_iterable(('Hello', 'World'))
+&gt;&gt;&gt; print(b)
+['Hello', 'World']
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def from_iterable(cls, iterable):
+    &#34;&#34;&#34;
+    Alternate constructor for `List`.
+    Gets data from a single `iterable` argument.
+
+    &gt;&gt;&gt; a = List.from_iterable([1, 2, 3])
+    &gt;&gt;&gt; print(a)
+    [1, 2, 3]
+    &gt;&gt;&gt; b = List.from_iterable((&#39;Hello&#39;, &#39;World&#39;))
+    &gt;&gt;&gt; print(b)
+    [&#39;Hello&#39;, &#39;World&#39;]
+    &#34;&#34;&#34;
+    new_list = cls()
+    new_list.extend(iterable)
+    return new_list</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sol.doubly_linked_list.List.append"><code class="name flex">
+<span>def <span class="ident">append</span></span>(<span>self, data)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Insert an element to the end of the list.</p>
+<pre><code>&gt;&gt;&gt; a = List()
+&gt;&gt;&gt; a.append(1)
+&gt;&gt;&gt; a.append(2)
+&gt;&gt;&gt; print(a)
+[1, 2]
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def append(self, data):
+    &#34;&#34;&#34;
+    Insert an element to the end of the list.
+
+    &gt;&gt;&gt; a = List()
+    &gt;&gt;&gt; a.append(1)
+    &gt;&gt;&gt; a.append(2)
+    &gt;&gt;&gt; print(a)
+    [1, 2]
+    &#34;&#34;&#34;
+    new_node = Node(data)
+    if self.tail:
+        self._insert_after(self.tail, new_node)
+    else:
+        self._insert_first(new_node)</code></pre>
+</details>
+</dd>
+<dt id="sol.doubly_linked_list.List.erase"><code class="name flex">
+<span>def <span class="ident">erase</span></span>(<span>self, data)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Erase all elements of the list that
+contain a given data.</p>
+<pre><code>&gt;&gt;&gt; a = List.from_iterable([1, 2, 3, 3, 3, 4])
+&gt;&gt;&gt; print(a)
+[1, 2, 3, 3, 3, 4]
+&gt;&gt;&gt; a.erase(3)
+&gt;&gt;&gt; print(a)
+[1, 2, 4]
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def erase(self, data):
+    &#34;&#34;&#34;
+    Erase all elements of the list that
+    contain a given data.
+
+    &gt;&gt;&gt; a = List.from_iterable([1, 2, 3, 3, 3, 4])
+    &gt;&gt;&gt; print(a)
+    [1, 2, 3, 3, 3, 4]
+    &gt;&gt;&gt; a.erase(3)
+    &gt;&gt;&gt; print(a)
+    [1, 2, 4]
+    &#34;&#34;&#34;
+    for node in self._nodes():
+        next = node.next
+        if node.data == data:
+            self._remove(node)
+        node = next</code></pre>
+</details>
+</dd>
+<dt id="sol.doubly_linked_list.List.extend"><code class="name flex">
+<span>def <span class="ident">extend</span></span>(<span>self, iterable)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Insert items from <code>iterable</code> to the end of the list.</p>
+<pre><code>&gt;&gt;&gt; a = List()
+&gt;&gt;&gt; b = [1, 2, 3]
+&gt;&gt;&gt; a.extend(b)
+&gt;&gt;&gt; print(a)
+[1, 2, 3]
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extend(self, iterable):
+    &#34;&#34;&#34;
+    Insert items from `iterable` to the end of the list.
+
+    &gt;&gt;&gt; a = List()
+    &gt;&gt;&gt; b = [1, 2, 3]
+    &gt;&gt;&gt; a.extend(b)
+    &gt;&gt;&gt; print(a)
+    [1, 2, 3]
+    &#34;&#34;&#34;
+    for item in iterable:
+        self.append(item)</code></pre>
+</details>
+</dd>
+<dt id="sol.doubly_linked_list.List.is_empty"><code class="name flex">
+<span>def <span class="ident">is_empty</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Check if list is empty.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_empty(self):
+    &#34;&#34;&#34;
+    Check if list is empty.
+    &#34;&#34;&#34;
+    return len(self) == 0</code></pre>
+</details>
+</dd>
+<dt id="sol.doubly_linked_list.List.pop_back"><code class="name flex">
+<span>def <span class="ident">pop_back</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Remove the last element of the list.</p>
+<pre><code>&gt;&gt;&gt; a = List.from_iterable([1, 2, 3])
+&gt;&gt;&gt; print(a)
+[1, 2, 3]
+&gt;&gt;&gt; a.pop_back()
+&gt;&gt;&gt; print(a)
+[1, 2]
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pop_back(self):
+    &#34;&#34;&#34;
+    Remove the last element of the list.
+
+    &gt;&gt;&gt; a = List.from_iterable([1, 2, 3])
+    &gt;&gt;&gt; print(a)
+    [1, 2, 3]
+    &gt;&gt;&gt; a.pop_back()
+    &gt;&gt;&gt; print(a)
+    [1, 2]
+    &#34;&#34;&#34;
+    if self.is_empty():
+        raise EmptyError(&#39;List must not be empty&#39;)
+
+    if self.size == 1:
+        self._remove_last()
+    else:
+        self.tail = self.tail.prev
+        self.tail.next = None
+        self.size -= 1</code></pre>
+</details>
+</dd>
+<dt id="sol.doubly_linked_list.List.pop_front"><code class="name flex">
+<span>def <span class="ident">pop_front</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Remove the first element of the list.</p>
+<pre><code>&gt;&gt;&gt; a = List.from_iterable([1, 2, 3])
+&gt;&gt;&gt; print(a)
+[1, 2, 3]
+&gt;&gt;&gt; a.pop_front()
+&gt;&gt;&gt; print(a)
+[2, 3]
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pop_front(self):
+    &#34;&#34;&#34;
+    Remove the first element of the list.
+
+    &gt;&gt;&gt; a = List.from_iterable([1, 2, 3])
+    &gt;&gt;&gt; print(a)
+    [1, 2, 3]
+    &gt;&gt;&gt; a.pop_front()
+    &gt;&gt;&gt; print(a)
+    [2, 3]
+    &#34;&#34;&#34;
+    if self.is_empty():
+        raise EmptyError(&#39;List must not be empty&#39;)
+
+    if self.size == 1:
+        self._remove_last()
+    else:
+        self.head = self.head.next
+        self.head.prev = None
+        self.size -= 1</code></pre>
+</details>
+</dd>
+<dt id="sol.doubly_linked_list.List.prepend"><code class="name flex">
+<span>def <span class="ident">prepend</span></span>(<span>self, data)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Insert an element to the beginning of the list.</p>
+<pre><code>&gt;&gt;&gt; a = List()
+&gt;&gt;&gt; a.prepend(1)
+&gt;&gt;&gt; a.prepend(0)
+&gt;&gt;&gt; print(a)
+[0, 1]
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def prepend(self, data):
+    &#34;&#34;&#34;
+    Insert an element to the beginning of the list.
+
+    &gt;&gt;&gt; a = List()
+    &gt;&gt;&gt; a.prepend(1)
+    &gt;&gt;&gt; a.prepend(0)
+    &gt;&gt;&gt; print(a)
+    [0, 1]
+    &#34;&#34;&#34;
+    new_node = Node(data)
+    if self.head:
+        self._insert_before(self.head, new_node)
+    else:
+        self._insert_first(new_node)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="sol" href="index.html">sol</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="sol.doubly_linked_list.List" href="#sol.doubly_linked_list.List">List</a></code></h4>
+<ul class="two-column">
+<li><code><a title="sol.doubly_linked_list.List.append" href="#sol.doubly_linked_list.List.append">append</a></code></li>
+<li><code><a title="sol.doubly_linked_list.List.erase" href="#sol.doubly_linked_list.List.erase">erase</a></code></li>
+<li><code><a title="sol.doubly_linked_list.List.extend" href="#sol.doubly_linked_list.List.extend">extend</a></code></li>
+<li><code><a title="sol.doubly_linked_list.List.from_iterable" href="#sol.doubly_linked_list.List.from_iterable">from_iterable</a></code></li>
+<li><code><a title="sol.doubly_linked_list.List.is_empty" href="#sol.doubly_linked_list.List.is_empty">is_empty</a></code></li>
+<li><code><a title="sol.doubly_linked_list.List.pop_back" href="#sol.doubly_linked_list.List.pop_back">pop_back</a></code></li>
+<li><code><a title="sol.doubly_linked_list.List.pop_front" href="#sol.doubly_linked_list.List.pop_front">pop_front</a></code></li>
+<li><code><a title="sol.doubly_linked_list.List.prepend" href="#sol.doubly_linked_list.List.prepend">prepend</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.4</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
