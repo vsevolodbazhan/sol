@@ -8,6 +8,10 @@ Implementation of [self-organizing](https://en.wikipedia.org/wiki/Self-organizin
 
 ## Installation
 
+```python
+pip install solists
+```
+
 ## Documentation
 
 ## Contributing
