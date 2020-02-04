@@ -2,7 +2,10 @@ install:
 	@poetry install
 
 test:
-	@poetry run python -m unittest
+	@poetry run python -m unittest tests
+
+doc:
+	@pdoc --html -o docs sol
 
 selfcheck:
 	poetry check

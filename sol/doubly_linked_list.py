@@ -1,26 +1,7 @@
-__all__ = ['List', 'MoveToFrontList', 'TransposeList']
+from ._node import Node
 
 
-class Node:
-    def __init__(self, data, next=None, prev=None):
-        self.data = data
-        self.next = next
-        self.prev = prev
-
-    def __repr__(self):
-        """
-        Return an unambiguous representation of an object.
-        """
-        next = self.next.data if self.next else None
-        prev = self.prev.data if self.prev else None
-        return (f'{self.__class__.__name__}('
-                f'{self.data!r}, next={next!r}, prev={prev!r})')
-
-    def __str__(self):
-        """
-        Return value as a string.
-        """
-        return f'{self.data}'
+__all__ = ['List', 'ListEmpty', 'NotEmptyError']
 
 
 class ListEmpty(ValueError):
@@ -317,67 +298,6 @@ class List:
         while node:
             yield node
             node = node.next
-
-
-class MoveToFrontList(List):
-    """
-    Doubly linked list that implements move to front method.
-
-    >>> a = MoveToFrontList.from_iterable([1, 2, 3])
-    >>> print(a)
-    [1, 2, 3]
-    >>> 3 in a
-    True
-    >>> print(a)
-    [3, 1, 2]
-    >>> 2 in a
-    True
-    >>> print(a)
-    [2, 3, 1]
-    >>> 5 in a
-    False
-    >>> print(a)
-    [2, 3, 1]
-    """
-
-    def _rearrange(self, node):
-        """
-        Apply move to front method.
-        """
-        if node is not self.head:
-            self._remove(node)
-            self._insert_before(self.head, node)
-
-
-class TransposeList(List):
-    """
-    Doubly linked list that implements transpose method.
-
-    >>> a = TransposeList.from_iterable([1, 2, 3])
-    >>> print(a)
-    [1, 2, 3]
-    >>> 3 in a
-    True
-    >>> print(a)
-    [1, 3, 2]
-    >>> 2 in a
-    True
-    >>> print(a)
-    [1, 2, 3]
-    >>> 5 in a
-    False
-    >>> print(a)
-    [1, 2, 3]
-    """
-
-    def _rearrange(self, node):
-        """
-        Apply transpose method.
-        """
-        if node is not self.head:
-            prev = node.prev
-            self._remove(node)
-            self._insert_before(prev, node)
 
 
 if __name__ == "__main__":
