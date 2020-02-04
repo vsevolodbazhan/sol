@@ -1,3 +1,6 @@
+PROJECT = sol
+DOCS = docs
+
 install:
 	@poetry install
 
@@ -5,7 +8,7 @@ test:
 	@poetry run python -m unittest
 
 doc:
-	@poetry run pdoc --html -o docs sol
+	@poetry run pdoc --force --html -o $(DOCS) $(PROJECT)
 
 selfcheck:
 	@poetry check
