@@ -1,4 +1,4 @@
-PROJECT = solists
+PACKAGE = solists
 DOCS = docs
 
 install:
@@ -8,7 +8,9 @@ test:
 	@poetry run python -m unittest
 
 doc:
-	@poetry run pdoc --force --html -o $(DOCS) $(PROJECT)
+	@poetry run pdoc --force --html -o $(DOCS) $(PACKAGE)
+	@mv $(DOCS)/$(PACKAGE)/* ./$(DOCS)
+	@rm -r $(DOCS)/$(PACKAGE)
 
 selfcheck:
 	@poetry check
