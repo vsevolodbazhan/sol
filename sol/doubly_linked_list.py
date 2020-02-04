@@ -1,10 +1,10 @@
 from ._node import Node
 
 
-__all__ = ['List', 'ListEmpty', 'NotEmptyError']
+__all__ = ['List', 'EmptyError', 'NotEmptyError']
 
 
-class ListEmpty(ValueError):
+class EmptyError(ValueError):
     """
     Raised when a list is empty.
     """
@@ -212,7 +212,7 @@ class List:
         [1, 2]
         """
         if self.is_empty():
-            raise ListEmpty('List must not be empty')
+            raise EmptyError('List must not be empty')
 
         if self.size == 1:
             self._remove_last()
@@ -233,7 +233,7 @@ class List:
         [2, 3]
         """
         if self.is_empty():
-            raise ListEmpty('List must not be empty')
+            raise EmptyError('List must not be empty')
 
         if self.size == 1:
             self._remove_last()
