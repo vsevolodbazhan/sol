@@ -1,7 +1,7 @@
 from ._node import Node
 
 
-__all__ = ['List', 'EmptyError', 'NotEmptyError']
+__all__ = ['List']
 
 
 class EmptyError(ValueError):
