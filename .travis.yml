@@ -3,9 +3,14 @@ python: 3.7
 
 before_install:
   - pip install poetry
+  - pip install coverage
 
 install:
   - make install
 
 script:
   - make check
+  - coverage run -m unittest
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
