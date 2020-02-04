@@ -16,6 +16,28 @@ After each successful search operation, the found element is being to the head o
 ### Transpose
 
 After each successful search operation, the found element is being swapped with its predecessor (if it is not already in the front of the list).
+
+## Usage
+
+```python
+import sol
+
+l = [1, 2, 3]
+
+a = sol.List()
+a.append(1)
+a.append(2)
+a.append(3)
+
+b = sol.MoveToFrontList()
+b.extend(l)
+
+c = sol.TransposeList.from_iterable(l)
+
+3 in a  # [1, 2, 3]
+3 in b  # [3, 1, 2]
+3 in c  # [1, 3, 2]
+```
 """
 
 
