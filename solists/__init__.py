@@ -11,7 +11,7 @@ Currently `solists` supports two self-organizing techniques.
 
 ### Move to front
 
-After each successful search operation, the found element is being moves to the beginning of the list.
+After each successful search operation, the found element is being moved to the beginning of the list.
 
 ### Transpose
 
