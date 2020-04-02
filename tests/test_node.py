@@ -36,3 +36,13 @@ class TestNode(unittest.TestCase):
         self.assertEqual(n.data, Name('Mike'))
         self.assertIsNone(n.next_node)
         self.assertIsNone(n.prev_node)
+
+    def test_repr_(self):
+        a = _node.Node(1)
+        b = _node.Node(2, a)
+        self.assertEqual(
+            b.__repr__(), f'Node({b.data}, next_node={a.data}, prev_node=None)')
+
+    def test_str(self):
+        n = _node.Node(1)
+        self.assertEqual(n.__str__(), f'{n.data}')
