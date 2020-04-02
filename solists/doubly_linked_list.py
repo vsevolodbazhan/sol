@@ -103,6 +103,9 @@ class List:
         """
         Check if list is equal to `iterable`.
         """
+        if len(self) != len(iterable):
+            return False
+
         for element, other_element in zip(self, iterable):
             if element != other_element:
                 return False

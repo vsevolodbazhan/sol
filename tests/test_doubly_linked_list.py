@@ -15,6 +15,18 @@ class TestList(unittest.TestCase):
         self.assertIsNone(a.tail)
         self.assertEqual(a.size, 0)
 
+    def test_eq(self):
+        a = solists.List()
+        self.assertEqual(a, [])
+
+        a.extend((1, 2, 3))
+        self.assertEqual(a, [1, 2, 3])
+
+        self.assertNotEqual(a, [])
+        self.assertNotEqual(a, [1, 2])
+        self.assertNotEqual(a, [1, 2, 4])
+        self.assertNotEqual(a, [1, 2, 3, 4])
+
     def test_conversion(self):
         a = solists.List.from_iterable([1])
         self.assertEqual(a, [1])
