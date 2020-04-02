@@ -29,6 +29,6 @@ class TransposeList(List):
         Apply transpose method.
         """
         if node is not self.head:
-            prev = node.prev
+            prev_node = node.prev_node
             self._remove(node)
-            self._insert_before(prev, node)
+            self._insert_before(prev_node, node)
