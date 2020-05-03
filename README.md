@@ -1,4 +1,4 @@
-# Sol
+# sol
 
 Implementation of [self-organizing](https://en.wikipedia.org/wiki/Self-organizing_list) linked lists.
 
