@@ -1,10 +1,10 @@
-# Sol
+# sol
 
 Implementation of [self-organizing](https://en.wikipedia.org/wiki/Self-organizing_list) linked lists.
 
 [![CodeFactor](https://www.codefactor.io/repository/github/vsevolodbazhan/sol/badge)](https://www.codefactor.io/repository/github/vsevolodbazhan/sol)
-[![Codecov](https://codecov.io/gh/vsevolodbazhan/Sol/branch/master/graph/badge.svg)](https://codecov.io/gh/vsevolodbazhan/Sol)
-![License](https://img.shields.io/github/license/vsevolodbazhan/Sol)
+[![Codecov](https://codecov.io/gh/vsevolodbazhan/Sol/branch/master/graph/badge.svg)](https://codecov.io/gh/vsevolodbazhan/sol)
+![License](https://img.shields.io/github/license/vsevolodbazhan/sol)
 
 ## Installation
 
@@ -14,7 +14,7 @@ pip install solists
 
 ## Documentation
 
-Documentation is available online at https://vsevolodbazhan.github.io/Sol/ and in the `docs` directory.
+Documentation is available online at https://vsevolodbazhan.github.io/sol/ and in the `docs` directory.
 
 ## Contributing
 
@@ -28,4 +28,4 @@ make test
 
 ## License
 
-[MIT](https://github.com/vsevolodbazhan/Sol/blob/master/LICENSE)
+[MIT](https://github.com/vsevolodbazhan/sol/blob/master/LICENSE)
